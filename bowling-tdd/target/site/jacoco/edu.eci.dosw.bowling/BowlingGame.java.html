@@ -33,25 +33,30 @@ public class BowlingGame {
      * Registra pinos derribados. Lanza IllegalArgumentException si pines &lt; 0 o &gt; 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
-    public void roll(int pins) { 
-        // TODO: implementar con TDD (RED -&gt; GREEN -&gt; REFACTOR) 
-<span class="fc" id="L38">        validatePins(pins);</span>
-<span class="fc" id="L39">        currentFrame().addRoll(pins);</span>
-<span class="fc" id="L40">    } </span>
+    public void roll(int pins) {
+<span class="fc" id="L37">        validatePins(pins);</span>
+<span class="fc" id="L38">        Frame current = currentFrame();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (current.getRolls().size() == 1</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">            &amp;&amp; current.getRolls().get(0) + pins &gt; 10</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">            &amp;&amp; current.getIndex() &lt; 9) {</span>
+<span class="fc" id="L42">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar más de 10&quot;);</span>
+        }
+<span class="fc" id="L44">        current.addRoll(pins);</span>
+<span class="fc" id="L45">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L45">        return 0; </span>
+<span class="nc" id="L50">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L51">        return false; </span>
+<span class="nc" id="L56">        return false; </span>
     } 
     
-<span class="fc" id="L54">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L59">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

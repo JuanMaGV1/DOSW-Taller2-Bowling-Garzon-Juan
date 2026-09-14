@@ -18,4 +18,8 @@ public class Frame {
     public List<Integer> getRolls() {
         return List.copyOf(rolls);
     }
+
+    public int getIndex(){
+        return index;
+    }
 }

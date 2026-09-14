@@ -33,11 +33,16 @@ public class BowlingGame {
      * Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
-    public void roll(int pins) { 
-        // TODO: implementar con TDD (RED -> GREEN -> REFACTOR) 
+    public void roll(int pins) {
         validatePins(pins);
-        currentFrame().addRoll(pins);
-    } 
+        Frame current = currentFrame();
+        if (current.getRolls().size() == 1
+            && current.getRolls().get(0) + pins > 10
+            && current.getIndex() < 9) {
+            throw new IllegalArgumentException("Dos tiros del frame no pueden sumar más de 10");
+        }
+        current.addRoll(pins);
+    }
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 

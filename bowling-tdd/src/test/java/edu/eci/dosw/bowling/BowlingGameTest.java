@@ -42,7 +42,7 @@ class BowlingGameTest {
     }
 
     // ------------------- A4 ------------------------
-    @Test 
+    @Test
     @DisplayName("roll(7)+roll(6) lanza IllegalArgumentException en el segundo tiro")
     void twoRollsSumGreaterThan10_throwsException() {
         game.roll(7);
