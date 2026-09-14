@@ -29,34 +29,39 @@ public class BowlingGame {
     private Frame currentFrame() {
 <span class="fc" id="L30">        return frames.get(frames.size() - 1);</span>
     }
+
+    private void validateFrameSum(Frame current, int pins){
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        boolean isSecondRoll = current.getRolls().size() == 1;</span>
+
+<span class="pc bpc" id="L37" title="2 of 6 branches missed.">        if (isNotTenthFrame &amp;&amp; isSecondRoll &amp;&amp; current.getRolls().get(0) + pins &gt; 10){</span>
+<span class="fc" id="L38">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar mas de 10&quot;);</span>
+        }
+<span class="fc" id="L40">    }</span>
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines &lt; 0 o &gt; 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
     public void roll(int pins) {
-<span class="fc" id="L37">        validatePins(pins);</span>
-<span class="fc" id="L38">        Frame current = currentFrame();</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (current.getRolls().size() == 1</span>
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">            &amp;&amp; current.getRolls().get(0) + pins &gt; 10</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">            &amp;&amp; current.getIndex() &lt; 9) {</span>
-<span class="fc" id="L42">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar más de 10&quot;);</span>
-        }
-<span class="fc" id="L44">        current.addRoll(pins);</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L46">        validatePins(pins);</span>
+<span class="fc" id="L47">        Frame current = currentFrame();</span>
+<span class="fc" id="L48">        validateFrameSum(current, pins);</span>
+<span class="fc" id="L49">        current.addRoll(pins);</span>
+<span class="fc" id="L50">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L50">        return 0; </span>
+<span class="nc" id="L55">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L56">        return false; </span>
+<span class="nc" id="L61">        return false; </span>
     } 
     
-<span class="fc" id="L59">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L64">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

@@ -29,6 +29,15 @@ public class BowlingGame {
     private Frame currentFrame() {
         return frames.get(frames.size() - 1);
     }
+
+    private void validateFrameSum(Frame current, int pins){
+        boolean isNotTenthFrame = current.getIndex() < 9;
+        boolean isSecondRoll = current.getRolls().size() == 1;
+
+        if (isNotTenthFrame && isSecondRoll && current.getRolls().get(0) + pins > 10){
+            throw new IllegalArgumentException("Dos tiros del frame no pueden sumar mas de 10");
+        }
+    }
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
@@ -36,11 +45,7 @@ public class BowlingGame {
     public void roll(int pins) {
         validatePins(pins);
         Frame current = currentFrame();
-        if (current.getRolls().size() == 1
-            && current.getRolls().get(0) + pins > 10
-            && current.getIndex() < 9) {
-            throw new IllegalArgumentException("Dos tiros del frame no pueden sumar más de 10");
-        }
+        validateFrameSum(current, pins);
         current.addRoll(pins);
     }
 
