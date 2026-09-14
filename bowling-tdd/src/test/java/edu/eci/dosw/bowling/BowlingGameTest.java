@@ -19,17 +19,18 @@ class BowlingGameTest {
     // ================================================
 
     // ------------------- A1 ------------------------
-
+    @Test 
+    @DisplayName("roll(0) registra 0 pines sin excepcion")
+    void rollZeroPins_registersZero(){
+        assertDoesNotThrow(() -> game.roll(0));
+        assertEquals(1, game.getFrames().get(0).getRolls().size());
+        assertEquals(0, game.getFrames().get(0).getRolls().get(0));
+    }
+    
     // ------------------- A2 ------------------------
     @Test
     @DisplayName("A2: roll(-1) lanza IllegalArgumentException")
     void rollNegativePins_throwsException() {
-        // Arrange
-        BowlingGame game = new BowlingGame();
-        // Act & Assert
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> game.roll(-1)
-        );
+        assertThrows(IllegalArgumentException.class, () -> game.roll(-1));
     }
 }
