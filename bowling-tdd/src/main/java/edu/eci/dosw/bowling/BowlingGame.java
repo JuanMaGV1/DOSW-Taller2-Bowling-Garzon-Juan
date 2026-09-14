@@ -17,6 +17,7 @@ public class BowlingGame {
     public BowlingGame() { 
         this.frames = new ArrayList<>(); 
         this.currentFrame = 0; 
+        this.frames.add(new Frame(0));
     } 
 
     private void validatePins(int pins){
@@ -31,6 +32,7 @@ public class BowlingGame {
     public void roll(int pins) { 
         // TODO: implementar con TDD (RED -> GREEN -> REFACTOR) 
         validatePins(pins);
+        frames.get(0).addRoll(pins);
     } 
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 

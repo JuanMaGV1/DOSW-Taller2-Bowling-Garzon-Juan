@@ -1,15 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.dosw.bowling.BowlingGameTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.083 s <<< FAILURE! -- in edu.eci.dosw.bowling.BowlingGameTest
-edu.eci.dosw.bowling.BowlingGameTest.rollZeroPins_registersZero -- Time elapsed: 0.030 s <<< ERROR!
-java.lang.Error: 
-Unresolved compilation problems: 
-	The method getRolls() is undefined for the type Frame
-	The method getRolls() is undefined for the type Frame
-
-	at edu.eci.dosw.bowling.BowlingGameTest.rollZeroPins_registersZero(BowlingGameTest.java:26)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in edu.eci.dosw.bowling.BowlingGameTest

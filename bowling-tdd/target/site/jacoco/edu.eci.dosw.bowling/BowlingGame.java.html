@@ -17,35 +17,37 @@ public class BowlingGame {
 <span class="fc" id="L17">    public BowlingGame() { </span>
 <span class="fc" id="L18">        this.frames = new ArrayList&lt;&gt;(); </span>
 <span class="fc" id="L19">        this.currentFrame = 0; </span>
-<span class="fc" id="L20">    } </span>
+<span class="fc" id="L20">        this.frames.add(new Frame(0));</span>
+<span class="fc" id="L21">    } </span>
 
     private void validatePins(int pins){
-<span class="pc bpc" id="L23" title="3 of 4 branches missed.">        if (pins &lt; MIN_PINS || pins &gt; MAX_PINS){</span>
-<span class="fc" id="L24">            throw new IllegalArgumentException(&quot;Pines fuera de rango [0, 10]: &quot; + pins);</span>
+<span class="pc bpc" id="L24" title="1 of 4 branches missed.">        if (pins &lt; MIN_PINS || pins &gt; MAX_PINS){</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Pines fuera de rango [0, 10]: &quot; + pins);</span>
         }
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L27">    }</span>
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines &lt; 0 o &gt; 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
     public void roll(int pins) { 
         // TODO: implementar con TDD (RED -&gt; GREEN -&gt; REFACTOR) 
-<span class="nc" id="L33">        validatePins(pins);</span>
-<span class="nc" id="L34">    } </span>
+<span class="fc" id="L34">        validatePins(pins);</span>
+<span class="fc" id="L35">        frames.get(0).addRoll(pins);</span>
+<span class="fc" id="L36">    } </span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L39">        return 0; </span>
+<span class="nc" id="L41">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L45">        return false; </span>
+<span class="nc" id="L47">        return false; </span>
     } 
     
-<span class="nc" id="L48">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L50">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
