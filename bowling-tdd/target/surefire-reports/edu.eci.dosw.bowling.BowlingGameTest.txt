@@ -1,4 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.dosw.bowling.BowlingGameTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in edu.eci.dosw.bowling.BowlingGameTest
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.117 s <<< FAILURE! -- in edu.eci.dosw.bowling.BowlingGameTest
+edu.eci.dosw.bowling.BowlingGameTest.twoRollsSumGreaterThan10_throwsException -- Time elapsed: 0.048 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at edu.eci.dosw.bowling.BowlingGameTest.twoRollsSumGreaterThan10_throwsException(BowlingGameTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
