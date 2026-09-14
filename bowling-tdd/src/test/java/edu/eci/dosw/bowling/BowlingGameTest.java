@@ -26,11 +26,18 @@ class BowlingGameTest {
         assertEquals(1, game.getFrames().get(0).getRolls().size());
         assertEquals(0, game.getFrames().get(0).getRolls().get(0));
     }
-    
+
     // ------------------- A2 ------------------------
     @Test
     @DisplayName("A2: roll(-1) lanza IllegalArgumentException")
     void rollNegativePins_throwsException() {
         assertThrows(IllegalArgumentException.class, () -> game.roll(-1));
+    }
+
+    // ------------------- A3 ------------------------
+    @Test 
+    @DisplayName("roll (11) lanza IllegalArgumenException")
+    void rollPinsGreaterThan10_throwsException(){
+        assertThrows(IllegalArgumentException.class, () -> game.roll(11));
     }
 }
