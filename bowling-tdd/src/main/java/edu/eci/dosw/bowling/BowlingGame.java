@@ -22,6 +22,9 @@ public class BowlingGame {
      */ 
     public void roll(int pins) { 
         // TODO: implementar con TDD (RED -> GREEN -> REFACTOR) 
+        if (pins < 0){
+            throw new IllegalArgumentException("Pines no puede ser negativo: " + pins);
+        }
     } 
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
