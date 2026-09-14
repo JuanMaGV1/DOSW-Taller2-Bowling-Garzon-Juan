@@ -25,6 +25,10 @@ public class BowlingGame {
             throw new IllegalArgumentException("Pines fuera de rango [0, 10]: " + pins);
         }
     }
+
+    private Frame currentFrame() {
+        return frames.get(frames.size() - 1);
+    }
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
@@ -32,7 +36,7 @@ public class BowlingGame {
     public void roll(int pins) { 
         // TODO: implementar con TDD (RED -> GREEN -> REFACTOR) 
         validatePins(pins);
-        frames.get(0).addRoll(pins);
+        currentFrame().addRoll(pins);
     } 
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
