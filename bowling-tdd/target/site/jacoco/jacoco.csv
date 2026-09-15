@@ -2,4 +2,4 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 bowling-tdd,edu.eci.dosw.bowling,FrameType,0,44,0,0,0,2,0,1,0,1
 bowling-tdd,edu.eci.dosw.bowling,BowlingScorer,3,0,0,0,1,0,1,0,1,0
 bowling-tdd,edu.eci.dosw.bowling,BowlingGame,4,124,0,20,2,25,2,17,2,7
-bowling-tdd,edu.eci.dosw.bowling,Frame,32,105,14,16,4,17,11,12,0,8
+bowling-tdd,edu.eci.dosw.bowling,Frame,33,105,14,16,4,17,12,12,1,8

@@ -27,10 +27,12 @@ public class Frame {
         if (index < 9){
             return isStrike() || rolls.size() == 2;
         }
-        // Frame 10
+        return tenthFrameComplete();
+    }
+
+    private boolean tenthFrameComplete(){
         int sum = rolls.stream().mapToInt(Integer::intValue).sum();
-        if (rolls.size() == 2 && sum < 10) return true;
-        return rolls.size() == 3;
+        return (rolls.size() == 2 && sum < 10) || rolls.size() == 3;
     }
     public boolean isStrike(){
         return !rolls.isEmpty() && rolls.get(0) == 10 && index <9;
