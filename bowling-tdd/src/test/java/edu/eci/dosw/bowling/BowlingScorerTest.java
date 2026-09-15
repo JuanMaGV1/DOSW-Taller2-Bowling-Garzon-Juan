@@ -119,4 +119,15 @@ class BowlingScorerTest {
     void atStart_isNotComplete() {
         assertFalse(game.isComplete());
     }
+
+    // ------------------ C2 ---------------------------
+    @Test
+    @DisplayName("isComplete() tras 9 frames es false")
+    void afterNineFrames_isNotComplete() {
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        assertFalse(game.isComplete());
+    }
 }
