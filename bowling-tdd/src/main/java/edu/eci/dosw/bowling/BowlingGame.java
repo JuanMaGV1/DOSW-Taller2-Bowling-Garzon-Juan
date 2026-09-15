@@ -38,6 +38,10 @@ public class BowlingGame {
             throw new IllegalArgumentException("Dos tiros del frame no pueden sumar mas de 10");
         }
     }
+
+    private void advanceFrame(Frame current){
+        frames.add(new Frame(current.getIndex() + 1));
+    }
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
@@ -49,7 +53,7 @@ public class BowlingGame {
         current.addRoll(pins);
 
         if (current.isStrike()) {
-            frames.add(new Frame(current.getIndex() + 1));
+            advanceFrame(current);
         }
     }
 
