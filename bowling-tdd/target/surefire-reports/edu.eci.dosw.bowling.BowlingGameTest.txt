@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.dosw.bowling.BowlingGameTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.123 s <<< FAILURE! -- in edu.eci.dosw.bowling.BowlingGameTest
-edu.eci.dosw.bowling.BowlingGameTest.roll5And5_marksSpare -- Time elapsed: 0.007 s <<< ERROR!
-java.lang.Error: 
-Unresolved compilation problem: 
-	The method isSpare() is undefined for the type Frame
-
-	at edu.eci.dosw.bowling.BowlingGameTest.roll5And5_marksSpare(BowlingGameTest.java:73)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s -- in edu.eci.dosw.bowling.BowlingGameTest

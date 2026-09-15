@@ -27,8 +27,16 @@ public class Frame {
         return !rolls.isEmpty() && rolls.get(0) == 10 && index <9;
     }
 
+    public boolean isSpare() {
+        return rolls.size() == 2
+                && rolls.get(0) + rolls.get(1) == 10
+                && rolls.get(0) != 10;
+    }
+
     public FrameType getType() {
+        if (index == 9) return FrameType.TENTH;
         if (isStrike()) return FrameType.STRIKE;
+        if (isSpare()) return FrameType.SPARE;
         return FrameType.NORMAL;
     }
 }
