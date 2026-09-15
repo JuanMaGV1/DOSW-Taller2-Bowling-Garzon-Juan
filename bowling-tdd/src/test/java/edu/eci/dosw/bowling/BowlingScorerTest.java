@@ -69,15 +69,14 @@ class BowlingScorerTest {
 
     // ------------------- B5 -------------------------
     @Test
-    @DisplayName("Dos strikes consecutivos + 5 => primer strike bonifica 10+5")
+    @DisplayName("Dos strikes consecutivos + 5 => 45")
     void twoStrikes_bonusCorrect() {
-        game.roll(10);
-        game.roll(10);
-        game.roll(5);
-        // completar juego
+        game.roll(10);   // frame 1
+        game.roll(10);   // frame 2
+        game.roll(5);    // frame 3, tiro 1
+        game.roll(0);    // frame 3, tiro 2
+        // frames 4-10: 7 frames × 2 = 14 tiros
         rollMany(14, 0);
-        game.roll(0); // 1 tiro extra para asegurar frame 10
-        // frame1 = 10+10+5 = 25; frame2 = 10+5+0=15; frame3=5
         assertEquals(45, game.score());
     }
 
