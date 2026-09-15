@@ -50,7 +50,17 @@ class BowlingGameTest {
     }
 
     // ------------------- A5 ------------------------
-
+    @Test
+    @DisplayName("roll() tras completar el juego lanza IllegalStateException")
+    void rollAfterGameComplete_throwsIllegalState() {
+        // 10 frames de 0,2
+        for (int i = 0; i < 10; i++) {
+            game.roll(0);
+            game.roll(2);
+        }
+        assertTrue(game.isComplete());
+        assertThrows(IllegalStateException.class, () -> game.roll(3));
+    }
     // ------------------- A6 ------------------------
     @Test
     @DisplayName("roll(10) en frame normal marca STRIKE y avanza al siguiente frame")
