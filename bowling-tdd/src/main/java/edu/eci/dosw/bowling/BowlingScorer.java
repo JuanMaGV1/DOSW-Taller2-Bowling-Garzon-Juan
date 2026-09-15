@@ -34,7 +34,7 @@ public class BowlingScorer {
         int rollsNeeded = 2;
         for (int j = i + 1; j < frames.size() && rollsNeeded > 0; j++) {
             for (int r : frames.get(j).getRolls()) {
-                if (rollsNeeded == 0) break;
+                if (rollsNeeded == 0) return bonus;
                 bonus += r;
                 rollsNeeded--;
             }
