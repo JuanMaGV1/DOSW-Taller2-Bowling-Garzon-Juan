@@ -13,6 +13,7 @@ public class BowlingGame {
 
     private static final int MIN_PINS = 0;
     private static final int MAX_PINS = 10;
+    private static final int MAX_FRAMES = 10;
     
     public BowlingGame() { 
         this.frames = new ArrayList<>(); 
@@ -69,8 +70,8 @@ public class BowlingGame {
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
-        if (frames.size() < 10) return false;
-        return frames.get(9).isComplete();
+        if (frames.size() < MAX_FRAMES) return false;
+        return frames.get(MAX_FRAMES - 1).isComplete();
     } 
     
     public List<Frame> getFrames() { return List.copyOf(frames); } 

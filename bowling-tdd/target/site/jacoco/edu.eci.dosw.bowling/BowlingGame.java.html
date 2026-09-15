@@ -13,67 +13,68 @@ public class BowlingGame {
 
     private static final int MIN_PINS = 0;
     private static final int MAX_PINS = 10;
+    private static final int MAX_FRAMES = 10;
     
-<span class="fc" id="L17">    public BowlingGame() { </span>
-<span class="fc" id="L18">        this.frames = new ArrayList&lt;&gt;(); </span>
-<span class="fc" id="L19">        this.currentFrame = 0; </span>
-<span class="fc" id="L20">        this.frames.add(new Frame(0));</span>
-<span class="fc" id="L21">    } </span>
+<span class="fc" id="L18">    public BowlingGame() { </span>
+<span class="fc" id="L19">        this.frames = new ArrayList&lt;&gt;(); </span>
+<span class="fc" id="L20">        this.currentFrame = 0; </span>
+<span class="fc" id="L21">        this.frames.add(new Frame(0));</span>
+<span class="fc" id="L22">    } </span>
 
     private void validatePins(int pins){
-<span class="fc bfc" id="L24" title="All 4 branches covered.">        if (pins &lt; MIN_PINS || pins &gt; MAX_PINS){</span>
-<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Pines fuera de rango [0, 10]: &quot; + pins);</span>
+<span class="fc bfc" id="L25" title="All 4 branches covered.">        if (pins &lt; MIN_PINS || pins &gt; MAX_PINS){</span>
+<span class="fc" id="L26">            throw new IllegalArgumentException(&quot;Pines fuera de rango [0, 10]: &quot; + pins);</span>
         }
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L28">    }</span>
 
     private Frame currentFrame() {
-<span class="fc" id="L30">        return frames.get(frames.size() - 1);</span>
+<span class="fc" id="L31">        return frames.get(frames.size() - 1);</span>
     }
 
     private void validateFrameSum(Frame current, int pins){
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
-<span class="fc bfc" id="L35" title="All 2 branches covered.">        boolean isSecondRoll = current.getRolls().size() == 1;</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        boolean isSecondRoll = current.getRolls().size() == 1;</span>
 
-<span class="fc bfc" id="L37" title="All 6 branches covered.">        if (isNotTenthFrame &amp;&amp; isSecondRoll &amp;&amp; current.getRolls().get(0) + pins &gt; 10){</span>
-<span class="fc" id="L38">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar mas de 10&quot;);</span>
+<span class="fc bfc" id="L38" title="All 6 branches covered.">        if (isNotTenthFrame &amp;&amp; isSecondRoll &amp;&amp; current.getRolls().get(0) + pins &gt; 10){</span>
+<span class="fc" id="L39">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar mas de 10&quot;);</span>
         }
-<span class="fc" id="L40">    }</span>
+<span class="fc" id="L41">    }</span>
 
     private void advanceFrame(Frame current){
-<span class="fc" id="L43">        frames.add(new Frame(current.getIndex() + 1));</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L44">        frames.add(new Frame(current.getIndex() + 1));</span>
+<span class="fc" id="L45">    }</span>
     /** 
      * Registra pinos derribados. Lanza IllegalArgumentException si pines &lt; 0 o &gt; 10. 
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
     public void roll(int pins) {
-<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (isComplete()){</span>
-<span class="fc" id="L51">            throw new IllegalStateException(&quot;El juego ya termino&quot;);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (isComplete()){</span>
+<span class="fc" id="L52">            throw new IllegalStateException(&quot;El juego ya termino&quot;);</span>
         }
-<span class="fc" id="L53">        validatePins(pins);</span>
-<span class="fc" id="L54">        Frame current = currentFrame();</span>
-<span class="fc" id="L55">        validateFrameSum(current, pins);</span>
-<span class="fc" id="L56">        current.addRoll(pins);</span>
+<span class="fc" id="L54">        validatePins(pins);</span>
+<span class="fc" id="L55">        Frame current = currentFrame();</span>
+<span class="fc" id="L56">        validateFrameSum(current, pins);</span>
+<span class="fc" id="L57">        current.addRoll(pins);</span>
 
-<span class="fc bfc" id="L58" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
-<span class="fc bfc" id="L59" title="All 4 branches covered.">        if (isNotTenthFrame &amp;&amp; current.isComplete()) {</span>
-<span class="fc" id="L60">            advanceFrame(current);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">        if (isNotTenthFrame &amp;&amp; current.isComplete()) {</span>
+<span class="fc" id="L61">            advanceFrame(current);</span>
         }
-<span class="fc" id="L62">    }</span>
+<span class="fc" id="L63">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L67">        return 0; </span>
+<span class="nc" id="L68">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
-<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (frames.size() &lt; 10) return false;</span>
-<span class="fc" id="L73">        return frames.get(9).isComplete();</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (frames.size() &lt; MAX_FRAMES) return false;</span>
+<span class="fc" id="L74">        return frames.get(MAX_FRAMES - 1).isComplete();</span>
     } 
     
-<span class="fc" id="L76">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L77">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
