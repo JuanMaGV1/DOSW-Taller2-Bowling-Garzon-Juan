@@ -8,11 +8,15 @@ public class BowlingScorer {
         return f.getRolls().stream().mapToInt(Integer::intValue).sum();
     }
 
+    private boolean isTenthFrame(Frame f){
+        return f.getIndex() == 9;
+    }
+
     public int calculate(List<Frame> frames) {
     int total = 0;
     for (int i = 0; i < frames.size(); i++) {
         Frame f = frames.get(i);
-        if (f.getIndex() == 9) {
+        if (isTenthFrame(f)) {
             total += sumRolls(f);
         } else if (f.isStrike()) {
             total += 10 + strikeBonus(frames, i);
