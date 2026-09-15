@@ -100,4 +100,12 @@ class BowlingScorerTest {
         for (int i = 0; i < 12; i++) game.roll(10);
         assertEquals(300, game.score());
     }
+
+    // ------------------- B8 --------------------------
+    @Test
+    @DisplayName("score() antes de completar lanza IllegalStateException")
+    void scoreBeforeComplete_throwsException() {
+        game.roll(5);
+        assertThrows(IllegalStateException.class, () -> game.score());
+    }
 }

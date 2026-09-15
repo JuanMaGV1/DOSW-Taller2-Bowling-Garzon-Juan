@@ -65,8 +65,8 @@ public class BowlingGame {
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (!isComplete()){</span>
-<span class="nc" id="L69">            throw new IllegalStateException(&quot;El juego no esta completo&quot;);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (!isComplete()){</span>
+<span class="fc" id="L69">            throw new IllegalStateException(&quot;El juego no esta completo&quot;);</span>
         }
 <span class="fc" id="L71">        return scorer.calculate(frames);</span>
     } 
