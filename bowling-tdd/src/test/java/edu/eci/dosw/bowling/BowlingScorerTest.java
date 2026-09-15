@@ -92,4 +92,12 @@ class BowlingScorerTest {
         game.roll(5); // bonus del frame 10
         assertEquals(150, game.score());
     }
+
+    // ------------------- B7 --------------------------
+    @Test
+    @DisplayName("Juego perfecto 12 strikes => 300")
+    void perfectGame_scores300() {
+        for (int i = 0; i < 12; i++) game.roll(10);
+        assertEquals(300, game.score());
+    }
 }
