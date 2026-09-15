@@ -32,9 +32,9 @@ import java.util.List;
     private int strikeBonus(List&lt;Frame&gt; frames, int i) {
 <span class="fc" id="L33">        int bonus = 0;</span>
 <span class="fc" id="L34">        int rollsNeeded = 2;</span>
-<span class="fc bfc" id="L35" title="All 4 branches covered.">        for (int j = i + 1; j &lt; frames.size() &amp;&amp; rollsNeeded &gt; 0; j++) {</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        for (int j = i + 1; j &lt; frames.size() &amp;&amp; rollsNeeded &gt; 0; j++) {</span>
 <span class="fc bfc" id="L36" title="All 2 branches covered.">            for (int r : frames.get(j).getRolls()) {</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (rollsNeeded == 0) break;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (rollsNeeded == 0) return bonus;</span>
 <span class="fc" id="L38">                bonus += r;</span>
 <span class="fc" id="L39">                rollsNeeded--;</span>
 <span class="fc" id="L40">            }</span>
