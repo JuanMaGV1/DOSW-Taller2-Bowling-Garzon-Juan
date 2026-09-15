@@ -28,7 +28,7 @@ import java.util.List;
 <span class="fc" id="L28">        int rollsNeeded = 2;</span>
 <span class="pc bpc" id="L29" title="1 of 4 branches missed.">        for (int j = i + 1; j &lt; frames.size() &amp;&amp; rollsNeeded &gt; 0; j++) {</span>
 <span class="fc bfc" id="L30" title="All 2 branches covered.">            for (int r : frames.get(j).getRolls()) {</span>
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">                if (rollsNeeded == 0) break;</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">                if (rollsNeeded == 0) break;</span>
 <span class="fc" id="L32">                bonus += r;</span>
 <span class="fc" id="L33">                rollsNeeded--;</span>
             }
