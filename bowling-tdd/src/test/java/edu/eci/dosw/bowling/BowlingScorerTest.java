@@ -40,4 +40,16 @@ class BowlingScorerTest {
         }
         assertEquals(70, game.score());
     }
+
+    // ------------------- B3 ------------------------
+    @Test
+    @DisplayName("Spare en frame 1 + siguiente tiro 3 => frame 1 = 13")
+    void spareInFirstFrame_addsNextRoll() {
+        game.roll(5);
+        game.roll(5);   // spare
+        game.roll(3);
+        // resto de frames a 0
+        rollMany(17, 0);
+        assertEquals(16, game.score()); // 13 + 3 = 16
+    }
 }
