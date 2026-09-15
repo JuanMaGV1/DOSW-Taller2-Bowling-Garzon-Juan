@@ -108,4 +108,15 @@ class BowlingScorerTest {
         game.roll(5);
         assertThrows(IllegalStateException.class, () -> game.score());
     }
+
+    // ================================================
+    // MODULO B - calculate()
+    // ================================================
+
+    // ------------------ C1 ---------------------------
+    @Test
+    @DisplayName("isComplete() al inicio es false")
+    void atStart_isNotComplete() {
+        assertFalse(game.isComplete());
+    }
 }
