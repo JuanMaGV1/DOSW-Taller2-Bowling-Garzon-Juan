@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 bowling-tdd,edu.eci.dosw.bowling,FrameType,0,44,0,0,0,2,0,1,0,1
-bowling-tdd,edu.eci.dosw.bowling,BowlingScorer,0,31,0,2,0,6,0,4,0,3
+bowling-tdd,edu.eci.dosw.bowling,BowlingScorer,4,68,2,6,0,13,2,6,0,4
 bowling-tdd,edu.eci.dosw.bowling,BowlingGame,5,160,1,25,1,32,1,21,0,9
-bowling-tdd,edu.eci.dosw.bowling,Frame,6,132,8,22,1,20,8,16,0,9
+bowling-tdd,edu.eci.dosw.bowling,Frame,4,134,7,23,1,20,7,17,0,9
