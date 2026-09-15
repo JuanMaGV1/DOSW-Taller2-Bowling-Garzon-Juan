@@ -22,5 +22,14 @@ public class Frame {
     public int getIndex(){
 <span class="fc" id="L23">        return index;</span>
     }
+
+    public boolean isStrike(){
+<span class="pc bpc" id="L27" title="2 of 6 branches missed.">        return !rolls.isEmpty() &amp;&amp; rolls.get(0) == 10 &amp;&amp; index &lt;9;</span>
+    }
+
+    public FrameType getType() {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (isStrike()) return FrameType.STRIKE;</span>
+<span class="nc" id="L32">        return FrameType.NORMAL;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

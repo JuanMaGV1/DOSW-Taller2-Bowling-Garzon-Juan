@@ -22,4 +22,13 @@ public class Frame {
     public int getIndex(){
         return index;
     }
+
+    public boolean isStrike(){
+        return !rolls.isEmpty() && rolls.get(0) == 10 && index <9;
+    }
+
+    public FrameType getType() {
+        if (isStrike()) return FrameType.STRIKE;
+        return FrameType.NORMAL;
+    }
 }

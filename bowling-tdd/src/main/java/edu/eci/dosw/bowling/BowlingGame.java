@@ -47,6 +47,10 @@ public class BowlingGame {
         Frame current = currentFrame();
         validateFrameSum(current, pins);
         current.addRoll(pins);
+
+        if (current.isStrike()) {
+            frames.add(new Frame(current.getIndex() + 1));
+        }
     }
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 

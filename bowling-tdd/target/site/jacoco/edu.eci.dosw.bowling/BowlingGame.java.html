@@ -47,21 +47,25 @@ public class BowlingGame {
 <span class="fc" id="L47">        Frame current = currentFrame();</span>
 <span class="fc" id="L48">        validateFrameSum(current, pins);</span>
 <span class="fc" id="L49">        current.addRoll(pins);</span>
-<span class="fc" id="L50">    }</span>
+
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (current.isStrike()) {</span>
+<span class="fc" id="L52">            frames.add(new Frame(current.getIndex() + 1));</span>
+        }
+<span class="fc" id="L54">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L55">        return 0; </span>
+<span class="nc" id="L59">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L61">        return false; </span>
+<span class="nc" id="L65">        return false; </span>
     } 
     
-<span class="fc" id="L64">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L68">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
