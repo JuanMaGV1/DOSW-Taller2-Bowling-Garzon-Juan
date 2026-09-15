@@ -22,7 +22,7 @@ import java.util.List;
 <span class="fc" id="L22">            total += 10 + strikeBonus(frames, i);</span>
 <span class="fc bfc" id="L23" title="All 2 branches covered.">        } else if (f.isSpare()) {</span>
 <span class="fc" id="L24">            total += 10 + spareBonus(frames, i);</span>
-<span class="fc" id="L25">        } else {</span>
+        } else {
 <span class="fc" id="L26">            total += sumRolls(f);</span>
         }
     }
@@ -37,7 +37,7 @@ import java.util.List;
 <span class="fc bfc" id="L37" title="All 2 branches covered.">                if (rollsNeeded == 0) break;</span>
 <span class="fc" id="L38">                bonus += r;</span>
 <span class="fc" id="L39">                rollsNeeded--;</span>
-            }
+<span class="fc" id="L40">            }</span>
         }
 <span class="fc" id="L42">        return bonus;</span>
     }
