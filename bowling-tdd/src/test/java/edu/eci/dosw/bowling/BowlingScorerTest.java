@@ -52,4 +52,17 @@ class BowlingScorerTest {
         rollMany(17, 0);
         assertEquals(16, game.score()); // 13 + 3 = 16
     }
+
+    // ------------------- B4 ------------------------
+    @Test
+    @DisplayName("Strike + roll(4)+roll(3) => frame 1 = 17")
+    void strike_addsNextTwoRolls() {
+        game.roll(10);
+        game.roll(4);
+        game.roll(3);
+        // frames restantes a 0
+        for (int i = 0; i < 8; i++) { game.roll(0); game.roll(0); }
+        game.roll(0); game.roll(0); // frame 10 normal
+        assertEquals(24, game.score()); // 17 + 7 = 24
+    }
 }
