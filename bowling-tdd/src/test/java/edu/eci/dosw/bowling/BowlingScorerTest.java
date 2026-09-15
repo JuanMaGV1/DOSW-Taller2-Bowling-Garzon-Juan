@@ -156,4 +156,20 @@ class BowlingScorerTest {
         game.roll(3);   // bonus
         assertTrue(game.isComplete());
     }
+
+    // ------------------ C5 -----------------------------
+    @Test
+    @DisplayName("Strike en frame 10 + 2 bonus => isComplete true")
+    void strikeInTenth_isCompleteAfterTwoBonus() {
+        for (int i = 0; i < 9; i++) {
+            game.roll(0);
+            game.roll(2);
+        }
+        game.roll(10);
+        assertFalse(game.isComplete());
+        game.roll(5);
+        assertFalse(game.isComplete());
+        game.roll(3);
+        assertTrue(game.isComplete());
+    }
 }
