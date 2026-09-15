@@ -67,10 +67,26 @@ class BowlingGameTest {
     @Test
     @DisplayName("roll(5)+roll(5) marca SPARE")
         void roll5And5_marksSpare() {
-            BowlingGame game = new BowlingGame();
             game.roll(5);
             game.roll(5);
             assertTrue(game.getFrames().get(0).isSpare());
             assertEquals(FrameType.SPARE, game.getFrames().get(0).getType());
+    }
+
+    // ------------------- A8 -------------------------
+    @Test
+    @DisplayName("Frame 10 con strike acepta 3 tiros sin excepción")
+    void tenthFrameWithStrike_allowsThreeRolls() {
+        // 9 frames con 0,2
+        for (int i = 0; i < 9; i++) {
+            game.roll(0);
+            game.roll(2);
+        }
+        // Frame 10: strike + 2 bonus
+        game.roll(10);
+        game.roll(5);
+        game.roll(3);
+
+        assertEquals(3, game.getFrames().get(9).getRolls().size());
     }
 }
