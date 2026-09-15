@@ -61,6 +61,7 @@ class BowlingGameTest {
         assertTrue(game.isComplete());
         assertThrows(IllegalStateException.class, () -> game.roll(3));
     }
+    
     // ------------------- A6 ------------------------
     @Test
     @DisplayName("roll(10) en frame normal marca STRIKE y avanza al siguiente frame")

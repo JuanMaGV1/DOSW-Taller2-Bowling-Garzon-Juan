@@ -47,6 +47,9 @@ public class BowlingGame {
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
     public void roll(int pins) {
+        if (isComplete()){
+            throw new IllegalStateException("El juego ya termino");
+        }
         validatePins(pins);
         Frame current = currentFrame();
         validateFrameSum(current, pins);
@@ -66,8 +69,8 @@ public class BowlingGame {
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
-        // TODO: implementar con TDD 
-        return false; 
+        if (frames.size() < 10) return false;
+        return frames.get(9).isComplete();
     } 
     
     public List<Frame> getFrames() { return List.copyOf(frames); } 

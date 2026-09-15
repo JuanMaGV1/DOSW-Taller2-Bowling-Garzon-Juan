@@ -47,30 +47,33 @@ public class BowlingGame {
      *  Lanza IllegalStateException si el juego ya termino. 
      */ 
     public void roll(int pins) {
-<span class="fc" id="L50">        validatePins(pins);</span>
-<span class="fc" id="L51">        Frame current = currentFrame();</span>
-<span class="fc" id="L52">        validateFrameSum(current, pins);</span>
-<span class="fc" id="L53">        current.addRoll(pins);</span>
-
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
-<span class="fc bfc" id="L56" title="All 4 branches covered.">        if (isNotTenthFrame &amp;&amp; current.isComplete()) {</span>
-<span class="fc" id="L57">            advanceFrame(current);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (isComplete()){</span>
+<span class="fc" id="L51">            throw new IllegalStateException(&quot;El juego ya termino&quot;);</span>
         }
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L53">        validatePins(pins);</span>
+<span class="fc" id="L54">        Frame current = currentFrame();</span>
+<span class="fc" id="L55">        validateFrameSum(current, pins);</span>
+<span class="fc" id="L56">        current.addRoll(pins);</span>
+
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L59" title="All 4 branches covered.">        if (isNotTenthFrame &amp;&amp; current.isComplete()) {</span>
+<span class="fc" id="L60">            advanceFrame(current);</span>
+        }
+<span class="fc" id="L62">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L64">        return 0; </span>
+<span class="nc" id="L67">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
-        // TODO: implementar con TDD 
-<span class="nc" id="L70">        return false; </span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (frames.size() &lt; 10) return false;</span>
+<span class="fc" id="L73">        return frames.get(9).isComplete();</span>
     } 
     
-<span class="fc" id="L73">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L76">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
