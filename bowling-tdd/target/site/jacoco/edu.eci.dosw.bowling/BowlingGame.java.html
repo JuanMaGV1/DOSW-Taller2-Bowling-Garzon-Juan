@@ -31,10 +31,10 @@ public class BowlingGame {
     }
 
     private void validateFrameSum(Frame current, int pins){
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
 <span class="fc bfc" id="L35" title="All 2 branches covered.">        boolean isSecondRoll = current.getRolls().size() == 1;</span>
 
-<span class="pc bpc" id="L37" title="1 of 6 branches missed.">        if (isNotTenthFrame &amp;&amp; isSecondRoll &amp;&amp; current.getRolls().get(0) + pins &gt; 10){</span>
+<span class="fc bfc" id="L37" title="All 6 branches covered.">        if (isNotTenthFrame &amp;&amp; isSecondRoll &amp;&amp; current.getRolls().get(0) + pins &gt; 10){</span>
 <span class="fc" id="L38">            throw new IllegalArgumentException(&quot;Dos tiros del frame no pueden sumar mas de 10&quot;);</span>
         }
 <span class="fc" id="L40">    }</span>
@@ -52,24 +52,25 @@ public class BowlingGame {
 <span class="fc" id="L52">        validateFrameSum(current, pins);</span>
 <span class="fc" id="L53">        current.addRoll(pins);</span>
 
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (current.isStrike()) {</span>
-<span class="fc" id="L56">            advanceFrame(current);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        boolean isNotTenthFrame = current.getIndex() &lt; 9;</span>
+<span class="fc bfc" id="L56" title="All 4 branches covered.">        if (isNotTenthFrame &amp;&amp; current.isComplete()) {</span>
+<span class="fc" id="L57">            advanceFrame(current);</span>
         }
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L59">    }</span>
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L63">        return 0; </span>
+<span class="nc" id="L64">        return 0; </span>
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
     public boolean isComplete() { 
         // TODO: implementar con TDD 
-<span class="nc" id="L69">        return false; </span>
+<span class="nc" id="L70">        return false; </span>
     } 
     
-<span class="fc" id="L72">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
+<span class="fc" id="L73">    public List&lt;Frame&gt; getFrames() { return List.copyOf(frames); } </span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

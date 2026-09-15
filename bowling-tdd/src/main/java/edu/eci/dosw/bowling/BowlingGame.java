@@ -52,7 +52,8 @@ public class BowlingGame {
         validateFrameSum(current, pins);
         current.addRoll(pins);
 
-        if (current.isStrike()) {
+        boolean isNotTenthFrame = current.getIndex() < 9;
+        if (isNotTenthFrame && current.isComplete()) {
             advanceFrame(current);
         }
     }

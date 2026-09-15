@@ -23,6 +23,15 @@ public class Frame {
         return index;
     }
 
+    public boolean isComplete() {
+        if (index < 9){
+            return isStrike() || rolls.size() == 2;
+        }
+        // Frame 10
+        int sum = rolls.stream().mapToInt(Integer::intValue).sum();
+        if (rolls.size() == 2 && sum < 10) return true;
+        return rolls.size() == 3;
+    }
     public boolean isStrike(){
         return !rolls.isEmpty() && rolls.get(0) == 10 && index <9;
     }

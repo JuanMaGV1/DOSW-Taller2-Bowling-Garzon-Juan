@@ -23,21 +23,30 @@ public class Frame {
 <span class="fc" id="L23">        return index;</span>
     }
 
+    public boolean isComplete() {
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if (index &lt; 9){</span>
+<span class="fc bfc" id="L28" title="All 4 branches covered.">            return isStrike() || rolls.size() == 2;</span>
+        }
+        // Frame 10
+<span class="nc" id="L31">        int sum = rolls.stream().mapToInt(Integer::intValue).sum();</span>
+<span class="nc bnc" id="L32" title="All 4 branches missed.">        if (rolls.size() == 2 &amp;&amp; sum &lt; 10) return true;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        return rolls.size() == 3;</span>
+    }
     public boolean isStrike(){
-<span class="pc bpc" id="L27" title="2 of 6 branches missed.">        return !rolls.isEmpty() &amp;&amp; rolls.get(0) == 10 &amp;&amp; index &lt;9;</span>
+<span class="pc bpc" id="L36" title="2 of 6 branches missed.">        return !rolls.isEmpty() &amp;&amp; rolls.get(0) == 10 &amp;&amp; index &lt;9;</span>
     }
 
     public boolean isSpare() {
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        return rolls.size() == 2</span>
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">                &amp;&amp; rolls.get(0) + rolls.get(1) == 10</span>
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">                &amp;&amp; rolls.get(0) != 10;</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        return rolls.size() == 2</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                &amp;&amp; rolls.get(0) + rolls.get(1) == 10</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                &amp;&amp; rolls.get(0) != 10;</span>
     }
 
     public FrameType getType() {
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (index == 9) return FrameType.TENTH;</span>
-<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (isStrike()) return FrameType.STRIKE;</span>
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (isSpare()) return FrameType.SPARE;</span>
-<span class="nc" id="L40">        return FrameType.NORMAL;</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (index == 9) return FrameType.TENTH;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (isStrike()) return FrameType.STRIKE;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if (isSpare()) return FrameType.SPARE;</span>
+<span class="nc" id="L49">        return FrameType.NORMAL;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
