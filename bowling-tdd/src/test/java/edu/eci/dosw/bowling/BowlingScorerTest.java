@@ -80,4 +80,16 @@ class BowlingScorerTest {
         // frame1 = 10+10+5 = 25; frame2 = 10+5+0=15; frame3=5
         assertEquals(45, game.score());
     }
+
+    // ------------------- B6 -------------------------
+    @Test
+    @DisplayName("Todos spares + último tiro 5 => 150")
+    void allSpares_score150() {
+        for (int i = 0; i < 10; i++) {
+            game.roll(5);
+            game.roll(5);
+        }
+        game.roll(5); // bonus del frame 10
+        assertEquals(150, game.score());
+    }
 }

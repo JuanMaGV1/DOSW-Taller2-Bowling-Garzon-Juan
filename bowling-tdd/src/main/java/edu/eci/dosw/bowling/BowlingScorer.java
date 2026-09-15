@@ -9,19 +9,21 @@ public class BowlingScorer {
     }
 
     public int calculate(List<Frame> frames) {
-        int total = 0;
-        for (int i = 0; i < frames.size(); i++) {
-            Frame f = frames.get(i);
-            if (f.isStrike()) {
-                total += 10 + strikeBonus(frames, i);
-            } else if (f.isSpare()) {
-                total += 10 + spareBonus(frames, i);
-            } else {
-                total += sumRolls(f);
-            }
+    int total = 0;
+    for (int i = 0; i < frames.size(); i++) {
+        Frame f = frames.get(i);
+        if (f.getIndex() == 9) {
+            total += sumRolls(f);
+        } else if (f.isStrike()) {
+            total += 10 + strikeBonus(frames, i);
+        } else if (f.isSpare()) {
+            total += 10 + spareBonus(frames, i);
+        } else {
+            total += sumRolls(f);
         }
-        return total;
     }
+    return total;
+}
 
     private int strikeBonus(List<Frame> frames, int i) {
         int bonus = 0;
