@@ -48,4 +48,19 @@ class BowlingGameTest {
         game.roll(7);
         assertThrows(IllegalArgumentException.class, () -> game.roll(6));
     }
-}
+
+    // ------------------- A5 ------------------------
+
+    // ------------------- A6 ------------------------
+    @Test
+    @DisplayName("roll(10) en frame normal marca STRIKE y avanza al siguiente frame")
+    void roll10_marksStrikeAndAdvancesFrame() {
+            BowlingGame game = new BowlingGame();
+            game.roll(10);
+
+            Frame first = game.getFrames().get(0);
+            assertTrue(first.isStrike());
+            assertEquals(FrameType.STRIKE, first.getType());
+            assertEquals(2, game.getFrames().size()); // se creó el frame 2
+        }
+    }

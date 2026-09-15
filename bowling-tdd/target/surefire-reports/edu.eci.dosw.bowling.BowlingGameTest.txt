@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.dosw.bowling.BowlingGameTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.080 s -- in edu.eci.dosw.bowling.BowlingGameTest
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.110 s <<< FAILURE! -- in edu.eci.dosw.bowling.BowlingGameTest
+edu.eci.dosw.bowling.BowlingGameTest.roll10_marksStrikeAndAdvancesFrame -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The method isStrike() is undefined for the type Frame
+	STRIKE cannot be resolved or is not a field
+	The method getType() is undefined for the type Frame
+
+	at edu.eci.dosw.bowling.BowlingGameTest.roll10_marksStrikeAndAdvancesFrame(BowlingGameTest.java:62)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
