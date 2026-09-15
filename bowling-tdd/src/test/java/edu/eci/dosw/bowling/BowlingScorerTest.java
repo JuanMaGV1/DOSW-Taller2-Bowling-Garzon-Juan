@@ -130,4 +130,15 @@ class BowlingScorerTest {
         }
         assertFalse(game.isComplete());
     }
+
+    // ------------------ C3 ---------------------------
+    @Test
+    @DisplayName("isComplete() tras 10 frames normales es true")
+    void afterTenNormalFrames_isComplete() {
+        for (int i = 0; i < 10; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        assertTrue(game.isComplete());
+    }
 }
