@@ -55,7 +55,6 @@ class BowlingGameTest {
     @Test
     @DisplayName("roll(10) en frame normal marca STRIKE y avanza al siguiente frame")
     void roll10_marksStrikeAndAdvancesFrame() {
-            BowlingGame game = new BowlingGame();
             game.roll(10);
 
             Frame first = game.getFrames().get(0);
@@ -63,4 +62,15 @@ class BowlingGameTest {
             assertEquals(FrameType.STRIKE, first.getType());
             assertEquals(2, game.getFrames().size()); // se creó el frame 2
         }
+
+    // ------------------- A7 ------------------------
+    @Test
+    @DisplayName("roll(5)+roll(5) marca SPARE")
+        void roll5And5_marksSpare() {
+            BowlingGame game = new BowlingGame();
+            game.roll(5);
+            game.roll(5);
+            assertTrue(game.getFrames().get(0).isSpare());
+            assertEquals(FrameType.SPARE, game.getFrames().get(0).getType());
     }
+}
