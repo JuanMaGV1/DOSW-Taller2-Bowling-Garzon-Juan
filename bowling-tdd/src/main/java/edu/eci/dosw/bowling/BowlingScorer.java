@@ -12,13 +12,28 @@ public class BowlingScorer {
         int total = 0;
         for (int i = 0; i < frames.size(); i++) {
             Frame f = frames.get(i);
-            if (f.isSpare()) {
+            if (f.isStrike()) {
+                total += 10 + strikeBonus(frames, i);
+            } else if (f.isSpare()) {
                 total += 10 + spareBonus(frames, i);
             } else {
                 total += sumRolls(f);
             }
         }
         return total;
+    }
+
+    private int strikeBonus(List<Frame> frames, int i) {
+        int bonus = 0;
+        int rollsNeeded = 2;
+        for (int j = i + 1; j < frames.size() && rollsNeeded > 0; j++) {
+            for (int r : frames.get(j).getRolls()) {
+                if (rollsNeeded == 0) break;
+                bonus += r;
+                rollsNeeded--;
+            }
+        }
+        return bonus;
     }
 
     private int spareBonus(List<Frame> frames, int i) {
