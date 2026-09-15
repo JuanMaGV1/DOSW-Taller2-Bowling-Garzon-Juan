@@ -13,7 +13,7 @@ import java.util.List;
 <span class="fc bfc" id="L13" title="All 2 branches covered.">        for (int i = 0; i &lt; frames.size(); i++) {</span>
 <span class="fc" id="L14">            Frame f = frames.get(i);</span>
 <span class="fc bfc" id="L15" title="All 2 branches covered.">            if (f.isSpare()) {</span>
-<span class="fc" id="L16">                total += 10 + firstRollOf(frames, i + 1);</span>
+<span class="fc" id="L16">                total += 10 + spareBonus(frames, i);</span>
 <span class="fc" id="L17">            } else {</span>
 <span class="fc" id="L18">                total += sumRolls(f);</span>
             }
@@ -21,10 +21,14 @@ import java.util.List;
 <span class="fc" id="L21">        return total;</span>
     }
 
+    private int spareBonus(List&lt;Frame&gt; frames, int i) {
+<span class="fc" id="L25">        return firstRollOf(frames, i + 1);</span>
+    }
+
     private int firstRollOf(List&lt;Frame&gt; frames, int i) {
-<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        if (i &gt;= frames.size()) return 0;</span>
-<span class="fc" id="L26">        Frame f = frames.get(i);</span>
-<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        return f.getRolls().isEmpty() ? 0 : f.getRolls().get(0);</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (i &gt;= frames.size()) return 0;</span>
+<span class="fc" id="L30">        Frame f = frames.get(i);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        return f.getRolls().isEmpty() ? 0 : f.getRolls().get(0);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
