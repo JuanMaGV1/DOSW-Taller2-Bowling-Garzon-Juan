@@ -2,9 +2,13 @@
 
 import java.util.List;
 
-<span class="nc" id="L5">public class BowlingScorer {</span>
+<span class="fc" id="L5">public class BowlingScorer {</span>
     public int calculate(List&lt;Frame&gt; frames){
-<span class="nc" id="L7">        return -1;</span>
+<span class="fc" id="L7">        int total = 0;</span>
+<span class="fc bfc" id="L8" title="All 2 branches covered.">        for (Frame f : frames){</span>
+<span class="fc" id="L9">            total += f.getRolls().stream().mapToInt(Integer::intValue).sum();</span>
+        }
+<span class="fc" id="L11">        return total;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

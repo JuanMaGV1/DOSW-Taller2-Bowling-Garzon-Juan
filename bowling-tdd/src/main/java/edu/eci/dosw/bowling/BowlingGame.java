@@ -10,6 +10,7 @@ import java.util.List;
 public class BowlingGame { 
     private final List<Frame> frames; 
     private int currentFrame; 
+    private BowlingScorer scorer = new BowlingScorer();
 
     private static final int MIN_PINS = 0;
     private static final int MAX_PINS = 10;
@@ -64,8 +65,10 @@ public class BowlingGame {
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */ 
     public int score() { 
-        // TODO: implementar con TDD 
-        return -1; 
+        if (!isComplete()){
+            throw new IllegalStateException("El juego no esta completo");
+        }
+        return scorer.calculate(frames);
     } 
     
     /** true cuando los 10 frames han sido completados. */ 
