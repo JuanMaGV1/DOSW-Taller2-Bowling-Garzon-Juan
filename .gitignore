@@ -1,56 +1,38 @@
-# Compiled class files
-*.class
-
-# Log files
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# VM crash logs
-hs_err_pid*
-replay_pid*
-
-# Maven #
+# Maven
 target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
-pom.xml.bak
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-# Gradle #
-.gradle
-build/
-!gradle-wrapper.jar
-
-# IDEs y Editores #
-.idea/
-*.iml
-.classpath
-.project
-.settings/
-.vscode/
-*.swp
-*.swo
-.DS_Store
-
 # SonarQube
 .sonarqube/
+.scannerwork/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+
+# Tokens y secretos
+*.token
+.env
+*.secret
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini

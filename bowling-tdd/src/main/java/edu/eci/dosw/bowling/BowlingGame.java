@@ -9,7 +9,6 @@ import java.util.List;
  */ 
 public class BowlingGame { 
     private final List<Frame> frames; 
-    private int currentFrame; 
     private BowlingScorer scorer = new BowlingScorer();
 
     private static final int MIN_PINS = 0;
@@ -18,7 +17,6 @@ public class BowlingGame {
     
     public BowlingGame() { 
         this.frames = new ArrayList<>(); 
-        this.currentFrame = 0; 
         this.frames.add(new Frame(0));
     } 
 
