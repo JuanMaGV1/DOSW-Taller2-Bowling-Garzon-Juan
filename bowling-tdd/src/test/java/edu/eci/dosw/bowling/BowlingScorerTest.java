@@ -1,0 +1,184 @@
+package edu.eci.dosw.bowling;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class BowlingScorerTest {
+    private BowlingGame game;
+
+    @BeforeEach
+    void setUp() {
+        game = new BowlingGame();
+    }
+
+    private void rollMany(int times, int pins) {
+        for (int i = 0; i < times; i++) game.roll(pins);
+    }
+
+    // ================================================
+    // MODULO B - calculate()
+    // ================================================
+
+    // ------------------- B1 ------------------------
+    @Test
+    @DisplayName("Juego con todos los tiros a 0 da score 0")
+    void allZeros_scoreZero() {
+        rollMany(20, 0);
+        assertEquals(0, game.score());
+    }
+
+    // ------------------- B2 ------------------------
+    @Test
+    @DisplayName("Juego sin strikes ni spares suma todos los pinos")
+    void noStrikesNoSpares_sumsAllPins() {
+        // 10 frames de 3+4 = 7 => total 70
+        for (int i = 0; i < 10; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        assertEquals(70, game.score());
+    }
+
+    // ------------------- B3 ------------------------
+    @Test
+    @DisplayName("Spare en frame 1 + siguiente tiro 3 => frame 1 = 13")
+    void spareInFirstFrame_addsNextRoll() {
+        game.roll(5);
+        game.roll(5);   // spare
+        game.roll(3);
+        // resto de frames a 0
+        rollMany(17, 0);
+        assertEquals(16, game.score()); // 13 + 3 = 16
+    }
+
+    // ------------------- B4 ------------------------
+    @Test
+    @DisplayName("Strike + roll(4)+roll(3) => frame 1 = 17")
+    void strike_addsNextTwoRolls() {
+        game.roll(10);              // frame 1
+        game.roll(4);
+        game.roll(3);               // frame 2
+        for (int i = 0; i < 8; i++) {
+            game.roll(0);
+            game.roll(0);
+        }                           // frames 3 al 10
+        assertEquals(24, game.score());
+    }
+
+    // ------------------- B5 -------------------------
+    @Test
+    @DisplayName("Dos strikes consecutivos + 5 => 45")
+    void twoStrikes_bonusCorrect() {
+        game.roll(10);   // frame 1
+        game.roll(10);   // frame 2
+        game.roll(5);    // frame 3, tiro 1
+        game.roll(0);    // frame 3, tiro 2
+        // frames 4-10: 7 frames × 2 = 14 tiros
+        rollMany(14, 0);
+        assertEquals(45, game.score());
+    }
+
+    // ------------------- B6 -------------------------
+    @Test
+    @DisplayName("Todos spares + último tiro 5 => 150")
+    void allSpares_score150() {
+        for (int i = 0; i < 10; i++) {
+            game.roll(5);
+            game.roll(5);
+        }
+        game.roll(5); // bonus del frame 10
+        assertEquals(150, game.score());
+    }
+
+    // ------------------- B7 --------------------------
+    @Test
+    @DisplayName("Juego perfecto 12 strikes => 300")
+    void perfectGame_scores300() {
+        for (int i = 0; i < 12; i++) game.roll(10);
+        assertEquals(300, game.score());
+    }
+
+    // ------------------- B8 --------------------------
+    @Test
+    @DisplayName("score() antes de completar lanza IllegalStateException")
+    void scoreBeforeComplete_throwsException() {
+        game.roll(5);
+        assertThrows(IllegalStateException.class, () -> game.score());
+    }
+
+    // ================================================
+    // MODULO C - isComplete()
+    // ================================================
+
+    // ------------------ C1 ---------------------------
+    @Test
+    @DisplayName("isComplete() al inicio es false")
+    void atStart_isNotComplete() {
+        assertFalse(game.isComplete());
+    }
+
+    // ------------------ C2 ---------------------------
+    @Test
+    @DisplayName("isComplete() tras 9 frames es false")
+    void afterNineFrames_isNotComplete() {
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        assertFalse(game.isComplete());
+    }
+
+    // ------------------ C3 ---------------------------
+    @Test
+    @DisplayName("isComplete() tras 10 frames normales es true")
+    void afterTenNormalFrames_isComplete() {
+        for (int i = 0; i < 10; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        assertTrue(game.isComplete());
+    }
+
+    // ------------------ C4 ----------------------------
+    @Test
+    @DisplayName("Spare en frame 10 + bonus => isComplete true")
+    void spareInTenth_isCompleteAfterBonus() {
+        for (int i = 0; i < 9; i++) {
+            game.roll(0);
+            game.roll(2);
+        }
+        game.roll(5);
+        game.roll(5);   // spare
+        assertFalse(game.isComplete());
+        game.roll(3);   // bonus
+        assertTrue(game.isComplete());
+    }
+
+    // ------------------ C5 -----------------------------
+    @Test
+    @DisplayName("Strike en frame 10 + 2 bonus => isComplete true")
+    void strikeInTenth_isCompleteAfterTwoBonus() {
+        for (int i = 0; i < 9; i++) {
+            game.roll(0);
+            game.roll(2);
+        }
+        game.roll(10);
+        assertFalse(game.isComplete());
+        game.roll(5);
+        assertFalse(game.isComplete());
+        game.roll(3);
+        assertTrue(game.isComplete());
+    }
+
+    // ------------------- C6 ------------------------------
+    @Test
+    @DisplayName("Juego perfecto: tras el 12º strike isComplete() es true")
+    void perfectGame_isCompleteAfterTwelfthStrike() {
+        for (int i = 0; i < 12; i++) {
+            game.roll(10);
+        }
+        assertTrue(game.isComplete());
+    }
+}
